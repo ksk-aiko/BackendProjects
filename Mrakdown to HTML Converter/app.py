@@ -1,4 +1,3 @@
-# 必要なモジュールをインポートする
 import sys
 import markdown
 
@@ -28,19 +27,20 @@ def convert_md_to_html(input_path, output_path):
     md_content = read_file(input_path) 
     # Markdown内容をHTMLに変換する
     html_content = markdown.markdown(md_content)
-
     # HTML内容を指定されたパスに保存する
     write_file(output_path, html_content)
 
+EXPECTED_ARGS = 4
+APPROPRIATE_COMMAND = "markdown"
 # コマンドライン引数を確認する
-if len(sys.argv) != 4:
+if len(sys.argv) != EXPECTED_ARGS:
     print("Usage: python3 file-converter.py markdown inputfile outputfile")
     sys.exit(1)
 
 cmd, input_file, output_file = sys.argv[1], sys.argv[2], sys.argv[3]
 
 # 'markdown' コマンドが指定された場合、MarkdownをHTMLに変換する
-if cmd == "markdown":
+if cmd == APPROPRIATE_COMMAND:
     convert_md_to_html(input_file, output_file)
 else:
     print(f"Invalid command: {cmd}")
